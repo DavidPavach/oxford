@@ -3,7 +3,7 @@ import { DocumentFilter, ScanBarcode, ShieldSecurity } from "iconsax-reactjs";
 
 export default function VerifyLoading({ code }: { code: string }) {
 	return (
-		<div className="flex flex-col justify-center items-center py-20">
+		<main className="flex flex-col justify-center items-center mx-auto py-20 max-w-screen-2xl">
 			{/* Scanning orb */}
 			<div className="relative flex justify-center items-center size-32 md:size-36 xl:size-40">
 				<motion.div
@@ -66,6 +66,6 @@ export default function VerifyLoading({ code }: { code: string }) {
 				<ShieldSecurity className="size-3 md:size-3.5 xl:size-4" /> Secured
 				channel · Corporations Canada records
 			</div>
-		</div>
+		</main>
 	);
 }

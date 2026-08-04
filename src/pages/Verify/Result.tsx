@@ -22,9 +22,9 @@ const STATUS_CONFIG: Record<
 	},
 	on_hold: {
 		label: "Pending Review",
-		color: "#D61F26",
-		bg: "bg-[#D61F26]/10",
-		border: "border-[#D61F26]/30",
+		color: "#F59E0B",
+		bg: "bg-[#F59E0B]/10",
+		border: "border-[#F59E0B]/30",
 		Icon: Clock,
 	},
 	revoked: {
@@ -44,6 +44,7 @@ const Result = ({ doc }: { doc: Documents }) => {
 			initial={{ opacity: 0, y: 24 }}
 			animate={{ opacity: 1, y: 0 }}
 			transition={{ duration: 0.5 }}
+			className="mx-auto p-4 py-20 max-w-screen-2xl"
 		>
 			{/* Status banner */}
 			<div
@@ -86,10 +87,10 @@ const Result = ({ doc }: { doc: Documents }) => {
 						key={label}
 						className="bg-[#F5F7FA] dark:bg-[#0E1628] p-4 border border-border rounded-xl"
 					>
-						<span className="font-bold text-[10px] text-muted-foreground md:text-[11px] xl:text-xs uppercase tracking-[.15em]">
+						<span className="font-bold text-[10px] text-muted-foreground md:text-[11px] xl:text-xs uppercase">
 							{label}
 						</span>
-						<p className="mt-1.5 font-mono font-semibold text-[11px] md:text-xs xl:text-sm truncate">
+						<p className="mt-1.5 font-heading font-semibold text-[11px] md:text-xs xl:text-sm">
 							{value}
 						</p>
 					</div>
@@ -123,7 +124,12 @@ const Result = ({ doc }: { doc: Documents }) => {
 				) : (
 					<div className="gap-5 grid sm:grid-cols-2 lg:grid-cols-3 mt-8">
 						{doc.files.map((file, i) => (
-							<FileCard key={file} file={file} index={i} />
+							<FileCard
+								key={file}
+								file={file}
+								index={i}
+								url={window.location.href}
+							/>
 						))}
 					</div>
 				)}

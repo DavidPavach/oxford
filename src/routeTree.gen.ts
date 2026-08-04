@@ -13,7 +13,6 @@ import { Route as HomeRouteRouteImport } from './routes/_home/route'
 import { Route as AuthRouteRouteImport } from './routes/_auth/route'
 import { Route as AdminRouteRouteImport } from './routes/_admin/route'
 import { Route as HomeIndexRouteImport } from './routes/_home/index'
-import { Route as HomeVerifyRouteImport } from './routes/_home/verify'
 import { Route as HomeSustainabilityRouteImport } from './routes/_home/sustainability'
 import { Route as HomeOperationsRouteImport } from './routes/_home/operations'
 import { Route as HomeInvestorsRouteImport } from './routes/_home/investors'
@@ -25,7 +24,9 @@ import { Route as AdminLogoutRouteImport } from './routes/_admin/logout'
 import { Route as AdminDocumentsRouteImport } from './routes/_admin/documents'
 import { Route as AdminDashboardRouteImport } from './routes/_admin/dashboard'
 import { Route as AdminContactsRouteImport } from './routes/_admin/contacts'
-import { Route as HomeVerifyIdRouteImport } from './routes/_home/verify.$id'
+import { Route as HomeVerifyRouteRouteImport } from './routes/_home/verify/route'
+import { Route as HomeVerifyIndexRouteImport } from './routes/_home/verify/index'
+import { Route as HomeVerifyIdRouteImport } from './routes/_home/verify/$id'
 
 const HomeRouteRoute = HomeRouteRouteImport.update({
   id: '/_home',
@@ -42,11 +43,6 @@ const AdminRouteRoute = AdminRouteRouteImport.update({
 const HomeIndexRoute = HomeIndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => HomeRouteRoute,
-} as any)
-const HomeVerifyRoute = HomeVerifyRouteImport.update({
-  id: '/verify',
-  path: '/verify',
   getParentRoute: () => HomeRouteRoute,
 } as any)
 const HomeSustainabilityRoute = HomeSustainabilityRouteImport.update({
@@ -104,14 +100,25 @@ const AdminContactsRoute = AdminContactsRouteImport.update({
   path: '/contacts',
   getParentRoute: () => AdminRouteRoute,
 } as any)
+const HomeVerifyRouteRoute = HomeVerifyRouteRouteImport.update({
+  id: '/verify',
+  path: '/verify',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
+const HomeVerifyIndexRoute = HomeVerifyIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => HomeVerifyRouteRoute,
+} as any)
 const HomeVerifyIdRoute = HomeVerifyIdRouteImport.update({
   id: '/$id',
   path: '/$id',
-  getParentRoute: () => HomeVerifyRoute,
+  getParentRoute: () => HomeVerifyRouteRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof HomeIndexRoute
+  '/verify': typeof HomeVerifyRouteRouteWithChildren
   '/contacts': typeof AdminContactsRoute
   '/dashboard': typeof AdminDashboardRoute
   '/documents': typeof AdminDocumentsRoute
@@ -123,8 +130,8 @@ export interface FileRoutesByFullPath {
   '/investors': typeof HomeInvestorsRoute
   '/operations': typeof HomeOperationsRoute
   '/sustainability': typeof HomeSustainabilityRoute
-  '/verify': typeof HomeVerifyRouteWithChildren
   '/verify/$id': typeof HomeVerifyIdRoute
+  '/verify/': typeof HomeVerifyIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof HomeIndexRoute
@@ -139,14 +146,15 @@ export interface FileRoutesByTo {
   '/investors': typeof HomeInvestorsRoute
   '/operations': typeof HomeOperationsRoute
   '/sustainability': typeof HomeSustainabilityRoute
-  '/verify': typeof HomeVerifyRouteWithChildren
   '/verify/$id': typeof HomeVerifyIdRoute
+  '/verify': typeof HomeVerifyIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_admin': typeof AdminRouteRouteWithChildren
   '/_auth': typeof AuthRouteRouteWithChildren
   '/_home': typeof HomeRouteRouteWithChildren
+  '/_home/verify': typeof HomeVerifyRouteRouteWithChildren
   '/_admin/contacts': typeof AdminContactsRoute
   '/_admin/dashboard': typeof AdminDashboardRoute
   '/_admin/documents': typeof AdminDocumentsRoute
@@ -158,14 +166,15 @@ export interface FileRoutesById {
   '/_home/investors': typeof HomeInvestorsRoute
   '/_home/operations': typeof HomeOperationsRoute
   '/_home/sustainability': typeof HomeSustainabilityRoute
-  '/_home/verify': typeof HomeVerifyRouteWithChildren
   '/_home/': typeof HomeIndexRoute
   '/_home/verify/$id': typeof HomeVerifyIdRoute
+  '/_home/verify/': typeof HomeVerifyIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/verify'
     | '/contacts'
     | '/dashboard'
     | '/documents'
@@ -177,8 +186,8 @@ export interface FileRouteTypes {
     | '/investors'
     | '/operations'
     | '/sustainability'
-    | '/verify'
     | '/verify/$id'
+    | '/verify/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -193,13 +202,14 @@ export interface FileRouteTypes {
     | '/investors'
     | '/operations'
     | '/sustainability'
-    | '/verify'
     | '/verify/$id'
+    | '/verify'
   id:
     | '__root__'
     | '/_admin'
     | '/_auth'
     | '/_home'
+    | '/_home/verify'
     | '/_admin/contacts'
     | '/_admin/dashboard'
     | '/_admin/documents'
@@ -211,9 +221,9 @@ export interface FileRouteTypes {
     | '/_home/investors'
     | '/_home/operations'
     | '/_home/sustainability'
-    | '/_home/verify'
     | '/_home/'
     | '/_home/verify/$id'
+    | '/_home/verify/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -250,13 +260,6 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof HomeIndexRouteImport
-      parentRoute: typeof HomeRouteRoute
-    }
-    '/_home/verify': {
-      id: '/_home/verify'
-      path: '/verify'
-      fullPath: '/verify'
-      preLoaderRoute: typeof HomeVerifyRouteImport
       parentRoute: typeof HomeRouteRoute
     }
     '/_home/sustainability': {
@@ -336,12 +339,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminContactsRouteImport
       parentRoute: typeof AdminRouteRoute
     }
+    '/_home/verify': {
+      id: '/_home/verify'
+      path: '/verify'
+      fullPath: '/verify'
+      preLoaderRoute: typeof HomeVerifyRouteRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
+    '/_home/verify/': {
+      id: '/_home/verify/'
+      path: '/'
+      fullPath: '/verify/'
+      preLoaderRoute: typeof HomeVerifyIndexRouteImport
+      parentRoute: typeof HomeVerifyRouteRoute
+    }
     '/_home/verify/$id': {
       id: '/_home/verify/$id'
       path: '/$id'
       fullPath: '/verify/$id'
       preLoaderRoute: typeof HomeVerifyIdRouteImport
-      parentRoute: typeof HomeVerifyRoute
+      parentRoute: typeof HomeVerifyRouteRoute
     }
   }
 }
@@ -378,35 +395,37 @@ const AuthRouteRouteWithChildren = AuthRouteRoute._addFileChildren(
   AuthRouteRouteChildren,
 )
 
-interface HomeVerifyRouteChildren {
+interface HomeVerifyRouteRouteChildren {
   HomeVerifyIdRoute: typeof HomeVerifyIdRoute
+  HomeVerifyIndexRoute: typeof HomeVerifyIndexRoute
 }
 
-const HomeVerifyRouteChildren: HomeVerifyRouteChildren = {
+const HomeVerifyRouteRouteChildren: HomeVerifyRouteRouteChildren = {
   HomeVerifyIdRoute: HomeVerifyIdRoute,
+  HomeVerifyIndexRoute: HomeVerifyIndexRoute,
 }
 
-const HomeVerifyRouteWithChildren = HomeVerifyRoute._addFileChildren(
-  HomeVerifyRouteChildren,
+const HomeVerifyRouteRouteWithChildren = HomeVerifyRouteRoute._addFileChildren(
+  HomeVerifyRouteRouteChildren,
 )
 
 interface HomeRouteRouteChildren {
+  HomeVerifyRouteRoute: typeof HomeVerifyRouteRouteWithChildren
   HomeCompanyRoute: typeof HomeCompanyRoute
   HomeContactRoute: typeof HomeContactRoute
   HomeInvestorsRoute: typeof HomeInvestorsRoute
   HomeOperationsRoute: typeof HomeOperationsRoute
   HomeSustainabilityRoute: typeof HomeSustainabilityRoute
-  HomeVerifyRoute: typeof HomeVerifyRouteWithChildren
   HomeIndexRoute: typeof HomeIndexRoute
 }
 
 const HomeRouteRouteChildren: HomeRouteRouteChildren = {
+  HomeVerifyRouteRoute: HomeVerifyRouteRouteWithChildren,
   HomeCompanyRoute: HomeCompanyRoute,
   HomeContactRoute: HomeContactRoute,
   HomeInvestorsRoute: HomeInvestorsRoute,
   HomeOperationsRoute: HomeOperationsRoute,
   HomeSustainabilityRoute: HomeSustainabilityRoute,
-  HomeVerifyRoute: HomeVerifyRouteWithChildren,
   HomeIndexRoute: HomeIndexRoute,
 }
 

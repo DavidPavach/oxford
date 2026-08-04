@@ -7,6 +7,7 @@ import { useDeleteDocument, useUpdateDocument } from "#/services/mutations";
 import { useAllDocuments } from "#/services/queries";
 import { formatDate } from "#/utils/format";
 import { STATUES } from "./Form";
+import VerificationQRCode from "./QRCode";
 
 const STATUS_COLORS: Record<string, string> = {
 	on_hold:
@@ -197,7 +198,7 @@ const Body = () => {
 					{documents.map((document) => (
 						<div
 							key={document.id}
-							className="flex items-center gap-3 p-3 border border-border rounded-xl"
+							className="flex gap-3 p-3 border border-border rounded-xl"
 						>
 							<div className="flex justify-center items-center bg-primary/10 rounded-lg size-10 md:size-12 xl:size-14 shrink-0">
 								<DocumentText1
@@ -235,18 +236,24 @@ const Body = () => {
 									</button>
 								</div>
 
-								{viewDocs &&
-									document.files.map((file, index) => (
-										<a
-											key={file}
-											href={file}
-											target="_blank"
-											rel="noopener noreferrer"
-											className="mr-2 text-[11px] hover:text-primary md:text-xs xl:text-sm underline underline-offset-3 duration-200"
-										>
-											Document {index + 1}
-										</a>
-									))}
+								{viewDocs && (
+									<>
+										{document.files.map((file, index) => (
+											<a
+												key={file}
+												href={file}
+												target="_blank"
+												rel="noopener noreferrer"
+												className="mr-2 text-[11px] hover:text-primary md:text-xs xl:text-sm underline underline-offset-3 duration-200"
+											>
+												Document {index + 1}
+											</a>
+										))}
+										<VerificationQRCode
+											documentNumber={document.documentNumber}
+										/>
+									</>
+								)}
 								<p className="mt-1 text-[10px] text-muted-foreground md:text-[11px] xl:text-xs">
 									{formatDate(document.createdAt)}
 								</p>

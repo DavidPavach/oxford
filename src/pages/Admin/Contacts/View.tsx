@@ -54,18 +54,16 @@ const View = ({
 					</p>
 				</div>
 			</div>
-			<div className="flex gap-2 p-4">
-				<button
-					type="button"
-					className="flex-1 bg-primary hover:bg-primary/80 rounded-xl text-primary-foreground"
+			<div className="flex gap-x-2 p-4 text-[11px] md:text-xs xl:text-sm">
+				<a
+					href={`mailto:${contact.email}`}
+					className="flex flex-1 justify-center items-center bg-primary hover:bg-primary/80 py-3 rounded-lg text-primary-foreground"
 				>
-					<a href={`mailto:${contact.email}`}>
-						<Sms className="mr-2 size-4" /> Reply via Email
-					</a>
-				</button>
+					<Sms className="mr-2 size-4" /> Reply via Email
+				</a>
 				<button
 					type="button"
-					className="bg-inherit hover:bg-destructive border-border rounded-xl hover:text-destructive-foreground duration-200"
+					className="bg-muted hover:bg-destructive px-4 py-3 border-border rounded-lg text-muted-foreground hover:text-destructive-foreground duration-200 cursor-pointer"
 					onClick={onClose}
 				>
 					Close

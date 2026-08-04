@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { APP_NAME } from "#/routes/__root";
 import Verify from "@/pages/Verify";
-import { APP_NAME } from "../__root";
 
-export const Route = createFileRoute("/_home/verify")({
+export const Route = createFileRoute("/_home/verify/")({
 	head: () => ({
 		meta: [
 			{

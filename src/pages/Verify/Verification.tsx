@@ -1,5 +1,5 @@
 import z from "zod";
-import { Route } from "#/routes/_home/verify.$id";
+import { Route } from "#/routes/_home/verify/$id";
 import { useDocument } from "#/services/queries";
 import VerifyError from "./Error";
 import VerifyLoading from "./Loading";
@@ -11,7 +11,6 @@ const DocumentIdSchema = z.string().min(10, {
 
 export default function Verification() {
 	const { id } = Route.useParams();
-	console.log("The params", id);
 
 	const validation = DocumentIdSchema.safeParse(id);
 	const query = useDocument(validation.data || "");

@@ -1,19 +1,50 @@
 import { Building, Call, Location, Sms } from "iconsax-reactjs";
 import { type SubmitEvent, useState } from "react";
+import { toast } from "react-fox-toast";
+import { useCreateContact } from "#/services/mutations";
 import PageHero from "@/components/PageHero";
 
 export default function Contact() {
 	const [sent, setSent] = useState<boolean>(false);
-	const [form, setForm] = useState<Record<string, string>>({
-		name: "",
+	const [form, setForm] = useState<{
+		fullName: string;
+		email: string;
+		organisation: string;
+		message: string;
+	}>({
+		fullName: "",
 		email: "",
-		org: "",
+		organisation: "",
 		message: "",
 	});
 
+	const createContact = useCreateContact();
 	function handleSubmit(e: SubmitEvent) {
 		e.preventDefault();
-		setSent(true);
+
+		if (
+			!form.fullName.trim() ||
+			!form.email.trim() ||
+			!form.organisation.trim() ||
+			!form.message.trim()
+		)
+			return toast.error(
+				"Kindly fill all the required field before submitting",
+			);
+		createContact.mutate(
+			{ data: form },
+			{
+				onSuccess: () => {
+					toast.success(
+						"Your contact request was submitted successfully, kindly wait for 24 Hours before submitting another one.",
+					);
+					setSent(true);
+				},
+				onError: (error) => {
+					toast.error(error.message ?? "Failed to send contact request.");
+				},
+			},
+		);
 	}
 
 	return (
@@ -110,11 +141,28 @@ export default function Contact() {
 						) : (
 							<form onSubmit={handleSubmit} className="space-y-5">
 								<p className="mb-6 eyebrow">Send an enquiry</p>
-								{[
-									["Full name", "name", "text", "Your name"],
-									["Email address", "email", "email", "your@email.com"],
-									["Organisation", "org", "text", "Company or institution"],
-								].map(([label, field, type, placeholder]) => (
+								{(
+									[
+										["Full name", "fullName", "text", "Your name"] as [
+											string,
+											keyof typeof form,
+											string,
+											string,
+										],
+										["Email address", "email", "email", "your@email.com"] as [
+											string,
+											keyof typeof form,
+											string,
+											string,
+										],
+										[
+											"Organisation",
+											"organisation",
+											"text",
+											"Company or institution",
+										] as [string, keyof typeof form, string, string],
+									] as Array<[string, keyof typeof form, string, string]>
+								).map(([label, field, type, placeholder]) => (
 									<div key={field}>
 										<label
 											htmlFor={field}
@@ -125,7 +173,7 @@ export default function Contact() {
 										<input
 											id={field}
 											type={type}
-											required={field !== "org"}
+											required={field !== "organisation"}
 											placeholder={placeholder}
 											value={form[field]}
 											onChange={(e) =>

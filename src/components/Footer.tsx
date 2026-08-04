@@ -40,19 +40,19 @@ export default function Footer() {
 							Company
 						</strong>
 						<Link
-							to="/"
+							to="/company"
 							className="block mt-3 text-[11px] text-muted-foreground hover:text-foreground md:text-xs xl:text-sm duration-200"
 						>
 							Corporate profile
 						</Link>
 						<Link
-							to="/"
+							to="/company"
 							className="block mt-3 text-[11px] text-muted-foreground hover:text-foreground md:text-xs xl:text-sm duration-200"
 						>
 							Leadership
 						</Link>
 						<Link
-							to="/"
+							to="/company"
 							className="block mt-3 text-[11px] text-muted-foreground hover:text-foreground md:text-xs xl:text-sm duration-200"
 						>
 							Governance
@@ -63,25 +63,25 @@ export default function Footer() {
 							Resources
 						</strong>
 						<Link
-							to="/"
+							to="/investors"
 							className="block mt-3 text-[11px] text-muted-foreground hover:text-foreground md:text-xs xl:text-sm duration-200"
 						>
 							Investor relations
 						</Link>
 						<Link
-							to="/"
+							to="/sustainability"
 							className="block mt-3 text-[11px] text-muted-foreground hover:text-foreground md:text-xs xl:text-sm duration-200"
 						>
 							Sustainability
 						</Link>
 						<Link
-							to="/"
+							to="/verify"
 							className="block mt-3 text-[11px] text-muted-foreground hover:text-foreground md:text-xs xl:text-sm duration-200"
 						>
 							Verify documents
 						</Link>
 						<Link
-							to="/"
+							to="/contact"
 							className="block mt-3 text-[11px] text-muted-foreground hover:text-foreground md:text-xs xl:text-sm duration-200"
 						>
 							Contact
