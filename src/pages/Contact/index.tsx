@@ -67,7 +67,7 @@ export default function Contact() {
 							<div className="flex gap-5">
 								<Location className="mt-1 size-4 md:size-4.5 xl:size-5 text-destructive shrink-0" />
 								<div>
-									<strong className="font-semibold text-[11px] md:text-xs xl:text-sm uppercase tracking-[.12em]">
+									<strong className="font-semibold smallText uppercase">
 										Registered Address
 									</strong>
 									<p className="mt-2 text-muted-foreground leading-relaxed">
@@ -82,7 +82,7 @@ export default function Contact() {
 							<div className="flex gap-5">
 								<Call className="mt-1 size-4 md:size-4.5 xl:size-5 text-destructive shrink-0" />
 								<div>
-									<strong className="font-semibold text-[11px] md:text-xs xl:text-sm uppercase tracking-[.12em]">
+									<strong className="font-semibold smallText uppercase">
 										Corporate Office
 									</strong>
 									<p className="mt-2 text-muted-foreground">+1 403-861-7385</p>
@@ -91,7 +91,7 @@ export default function Contact() {
 							<div className="flex gap-5">
 								<Sms className="mt-1 size-4 md:size-4.5 xl:size-5 text-destructive shrink-0" />
 								<div>
-									<strong className="font-semibold text-[11px] md:text-xs xl:text-sm uppercase tracking-[.12em]">
+									<strong className="font-semibold smallText uppercase">
 										General Enquiries
 									</strong>
 									<p className="mt-2 text-muted-foreground">
@@ -110,12 +110,12 @@ export default function Contact() {
 							].map(([k, v], i) => (
 								<div
 									key={k}
-									className={`grid grid-cols-2 gap-4 px-5 py-3 text-[11px] md:text-xs xl:text-sm ${i % 2 === 0 ? "bg-[#F5F7FA] dark:bg-[#0E1628]" : "bg-white dark:bg-[#05070C]"}`}
+									className={`grid grid-cols-2 gap-4 px-5 py-3 smallText ${i % 2 === 0 ? "bg-[#F5F7FA] dark:bg-[#0E1628]" : "bg-white dark:bg-[#05070C]"}`}
 								>
-									<span className="font-semibold text-[10px] text-muted-foreground md:text-[11px] xl:text-xs uppercase tracking-[.12em]">
+									<span className="font-semibold text-muted-foreground smallestText uppercase">
 										{k}
 									</span>
-									<span className="font-mono font-medium text-[10px] md:text-[11px] xl:text-xs">
+									<span className="font-mono font-medium smallestText">
 										{v}
 									</span>
 								</div>
@@ -166,7 +166,7 @@ export default function Contact() {
 									<div key={field}>
 										<label
 											htmlFor={field}
-											className="block mb-1.5 font-semibold text-muted-foreground text-xs uppercase tracking-[.12em]"
+											className="block mb-1.5 font-semibold text-muted-foreground text-xs uppercase"
 										>
 											{label}
 										</label>
@@ -179,14 +179,14 @@ export default function Contact() {
 											onChange={(e) =>
 												setForm((v) => ({ ...v, [field]: e.target.value }))
 											}
-											className="bg-[#F5F7FA] dark:bg-[#0E1628] px-4 py-3 border border-border focus:border-primary dark:border-white/10 dark:focus:border-white/40 rounded-lg outline-none w-full text-[11px] md:text-xs xl:text-sm transition"
+											className="bg-[#F5F7FA] dark:bg-[#0E1628] px-4 py-3 border border-border focus:border-primary dark:border-white/10 dark:focus:border-white/40 rounded-lg outline-none w-full smallText transition"
 										/>
 									</div>
 								))}
 								<div>
 									<label
 										htmlFor=""
-										className="block mb-1.5 font-semibold text-[10px] text-muted-foreground md:text-[11px] xl:text-xs uppercase tracking-[.12em]"
+										className="block mb-1.5 font-semibold smallText text-muted-foreground uppercase"
 									>
 										Message
 									</label>
@@ -198,7 +198,7 @@ export default function Contact() {
 										onChange={(e) =>
 											setForm((v) => ({ ...v, message: e.target.value }))
 										}
-										className="bg-[#F5F7FA] dark:bg-[#0E1628] px-4 py-3 border border-border focus:border-primary dark:border-white/10 dark:focus:border-white/40 rounded-lg outline-none w-full text-[11px] md:text-xs xl:text-sm transition resize-none"
+										className="bg-[#F5F7FA] dark:bg-[#0E1628] px-4 py-3 border border-border focus:border-primary dark:border-white/10 dark:focus:border-white/40 rounded-lg outline-none w-full smallText transition resize-none"
 									/>
 								</div>
 								<button

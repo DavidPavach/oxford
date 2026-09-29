@@ -1,21 +1,31 @@
+import Capabilities from "./Capabilities";
 import CompanyIntro from "./CompanyIntro";
-import GlobalMap from "./GlobalMap";
+import ContactCta from "./ContactCta";
+import FaqSection from "./Faqs";
 import Hero from "./Hero";
-import InvestorPanel from "./Investors";
+import Industries from "./Industries";
+import Infrastructure from "./Infrastructure";
+import InvestorPortal from "./InvestorPortal";
+import Management from "./Management";
 import Operations from "./Operations";
-import Stats from "./Stats";
-import Sustainability from "./Sustainability";
+import ResponsibleEnergy from "./ResponsibleEnergy";
+import SupplyTrading from "./SupplyTrading";
 
 const index = () => {
 	return (
 		<main>
 			<Hero />
 			<CompanyIntro />
-			<Stats />
+			<Capabilities />
+			<SupplyTrading />
+			<Infrastructure />
+			<Management />
 			<Operations />
-			<GlobalMap />
-			<InvestorPanel />
-			<Sustainability />
+			<Industries />
+			<InvestorPortal />
+			<ResponsibleEnergy />
+			<FaqSection />
+			<ContactCta />
 		</main>
 	);
 };

@@ -1,68 +1,82 @@
 import { Link } from "@tanstack/react-router";
-import { CloseSquare, Element3 } from "iconsax-reactjs";
-import { useState } from "react";
-import Logo from "./Logo";
-import { ThemeToggle } from "./ThemeToggle";
+import { Menu } from "lucide-react";
+import { useEffect, useState } from "react";
+import { NAV_LINKS } from "#/assests";
+import MonolithNav from "./MonolithNav";
 
-const links = [
-	["Company", "/company"],
-	["Operations", "/operations"],
-	["Investors", "/investors"],
-	["Sustainability", "/sustainability"],
-	["Contact", "/contact"],
-	["Verify", "/verify"],
-];
-
-export default function NavBar() {
+export default function Navbar() {
 	const [open, setOpen] = useState<boolean>(false);
+	const [scrolled, setScrolled] = useState<boolean>(false);
+
+	useEffect(() => {
+		const onScroll = () => setScrolled(window.scrollY > 40);
+		onScroll();
+		window.addEventListener("scroll", onScroll, { passive: true });
+		return () => window.removeEventListener("scroll", onScroll);
+	}, []);
+
+	useEffect(() => {
+		setOpen(false);
+	}, []);
+
+	useEffect(() => {
+		document.body.style.overflow = open ? "hidden" : "";
+		return () => {
+			document.body.style.overflow = "";
+		};
+	}, [open]);
 
 	return (
-		<header className="top-0 z-10 fixed inset-x-0 px-4 pt-4">
-			<div className="flex justify-between items-center bg-white/90 dark:bg-[#08101f]/90 shadow-[0_8px_40px_rgba(8,31,77,.02)] backdrop-blur-xl mx-auto px-4 py-3 border border-border rounded-xl max-w-screen-2xl">
-				<Logo />
-				<nav className="hidden lg:flex items-center gap-6">
-					{links.map(([label, path]) => (
-						<Link
-							activeProps={{ className: "text-destructive" }}
-							key={path}
-							to={path}
-							className={`nav-link`}
-						>
-							{label}
+		<>
+			<header
+				className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+					scrolled
+						? "bg-background backdrop-blur-xl border-b border-border"
+						: "bg-transparent border-b border-transparent"
+				}`}
+			>
+				<div className="px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12">
+					<div className="flex items-center justify-between h-16 md:h-20">
+						<Link to="/">
+							<img
+								src="/logo.png"
+								alt="Logo"
+								className="h-8 md:h-9 xl:h-10 rounded-md dark:hidden"
+							/>
+							<img
+								src="/logo_dark.png"
+								alt="Logo"
+								className="h-8 md:h-9 xl:h-10 rounded-md dark:block hidden"
+							/>
 						</Link>
-					))}
-				</nav>
-				<div className="flex items-center gap-1">
-					<ThemeToggle />
-					<button
-						type="button"
-						onClick={() => setOpen(!open)}
-						className="lg:hidden icon-button"
-						aria-label="Open menu"
-					>
-						{open ? (
-							<CloseSquare className="size-4 md:size-4.5" />
-						) : (
-							<Element3 className="size-4 md:size-4.5" />
-						)}
-					</button>
+
+						<div className="hidden lg:flex items-center gap-9">
+							{NAV_LINKS.map((l) => (
+								<Link key={l.path} to={l.path} className="nav-link">
+									{l.label}
+								</Link>
+							))}
+						</div>
+
+						<button
+							type="button"
+							onClick={() => setOpen(true)}
+							aria-label="Open navigation"
+							className="group flex items-center gap-2.5 cursor-pointer"
+						>
+							<span className="hidden sm:flex flex-col items-end gap-1.25">
+								<span className="block h-0.5 w-7 bg-muted-foreground transition-all duration-300 group-hover:w-5" />
+								<span className="block h-0.5 w-5 bg-muted-foreground transition-all duration-300 group-hover:w-7" />
+							</span>
+							<span className="grid place-items-center size-8 md:size-9 xl:size-10 text-muted-foreground border border-muted-foreground rounded-sm hover:border-accent hover:text-accent transition-colors">
+								<Menu className="size-4 md:size-4.5 xl:size-5" />
+							</span>
+						</button>
+					</div>
 				</div>
-			</div>
-			{open && (
-				<nav className="lg:hidden grid bg-white dark:bg-[#0E1628] shadow mx-auto mt-2 p-4 rounded-xl max-w-screen-2xl">
-					{links.map(([label, path]) => (
-						<Link
-							activeProps={{ className: "text-destructive" }}
-							onClick={() => setOpen(false)}
-							key={path}
-							to={path}
-							className="py-3 border-slate-100 dark:border-white/10 border-b font-semibold hover:text-destructive text-xs md:text-sm duration-200"
-						>
-							{label}
-						</Link>
-					))}
-				</nav>
-			)}
-		</header>
+			</header>
+
+			<MonolithNav open={open} onClose={() => setOpen(false)} />
+		</>
 	);
 }
