@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { ArrowUp } from "lucide-react";
 import { COMPANY, IMAGES } from "#/assests";
+import { ThemeToggle } from "./ThemeToggle";
 import Ticker from "./Ticker";
 
 const FOOTER_COLUMNS = [
@@ -55,7 +56,7 @@ export default function Footer() {
 						className="w-full h-full object-fill"
 					/>
 					<div className="absolute inset-0 bg-linear-to-t from-background via-background/90 to-background/60" />
-					<div className="absolute inset-0 bg-background/60" />
+					<div className="absolute inset-0 bg-background/40" />
 				</div>
 
 				<div className="relative section-shell">
@@ -117,18 +118,23 @@ export default function Footer() {
 								</p>
 							</div>
 
-							<button
-								type="button"
-								onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-								className="group flex items-center gap-3 cursor-pointer"
-							>
-								<span className="font-mono smallestText uppercase tracking-[0.2em] text-muted-foreground group-hover:text-accent transition-colors">
-									Back to top
-								</span>
-								<span className="relative grid place-items-center w-10 h-10 border border-border rounded-sm group-hover:border-accent transition-colors">
-									<ArrowUp className="w-4 h-4 group-hover:text-accent transition-colors" />
-								</span>
-							</button>
+							<section className="flex gap-x-2 items-center">
+								<ThemeToggle />
+								<button
+									type="button"
+									onClick={() =>
+										window.scrollTo({ top: 0, behavior: "smooth" })
+									}
+									className="group flex items-center gap-3 cursor-pointer"
+								>
+									<span className="font-mono smallestText uppercase tracking-[0.2em] text-muted-foreground group-hover:text-accent transition-colors">
+										Back to top
+									</span>
+									<span className="relative grid place-items-center w-10 h-10 border border-border rounded-sm group-hover:border-accent transition-colors">
+										<ArrowUp className="w-4 h-4 group-hover:text-accent transition-colors" />
+									</span>
+								</button>
+							</section>
 						</div>
 
 						<div className="mt-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 smallestText font-mono uppercase tracking-[0.14em]">

@@ -44,11 +44,11 @@ export default function Management() {
 				title="The people who run the company."
 				description="An experienced executive team accountable for safety, performance and the long-term integrity of Oxford Petroleum."
 			/>
-			<div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+			<div className="mt-14 grid grid-cols-1 min-[600px]:grid-cols-2 lg:grid-cols-3 gap-5">
 				{LEADERS.map((p) => (
 					<div
 						key={p.name}
-						className="group relative overflow-hidden rounded-xl border border-border bg-card p-5 md:p-6 xl:p-7 transition-all duration-200 hover:-translate-y-0.5 hover:border-foreground/15 hover:shadow-sm	"
+						className="group relative overflow-hidden rounded-xl border border-border bg-card p-4 md:p-5 xl:p-6 transition-all duration-200 hover:-translate-y-0.5 hover:border-foreground/15 hover:shadow-sm	"
 					>
 						<div className="flex items-start gap-4">
 							<div className="shrink-0">

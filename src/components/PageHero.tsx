@@ -1,40 +1,41 @@
-import { motion } from "framer-motion";
-
-type PageProps = {
+declare type PageHeroProps = {
 	eyebrow: string;
 	title: string;
-	subtitle: string;
-	dark?: boolean;
+	description?: string;
+	image?: string;
+	children?: React.ReactNode;
 };
 
 export default function PageHero({
 	eyebrow,
 	title,
-	subtitle,
-	dark = false,
-}: PageProps) {
+	description,
+	image,
+	children,
+}: PageHeroProps) {
 	return (
-		<section
-			className={`pt-40 pb-20 px-4 sm:px-6 md:px-8 xl:px-10 ${dark ? "bg-[#05070C] text-white" : "bg-[#F5F7FA] dark:bg-[#05070C] border-b border-border dark:text-white"}`}
-		>
-			<div className="mx-auto max-w-screen-2xl">
-				<motion.div
-					initial={{ opacity: 0, y: 24 }}
-					animate={{ opacity: 1, y: 0 }}
-					transition={{ duration: 0.7 }}
-				>
-					{eyebrow && (
-						<p className="mb-6 text-destructive eyebrow">{eyebrow}</p>
-					)}
-					<h1 className="max-w-5xl font-heading font-semibold text-[clamp(3rem,7vw,7rem)] leading-[.88] tracking-[-.06em]">
+		<section className="relative pt-28 md:pt-36 pb-16 md:pb-24 overflow-hidden border-b border-border">
+			{image && (
+				<div className="absolute inset-0">
+					<img src={image} alt="" className="w-full h-full object-cover" />
+					<div className="absolute inset-0 bg-background/65" />
+					<div className="absolute inset-0 bg-linear-to-b from-background/60 via-background/70 to-background" />
+				</div>
+			)}
+			{!image && <div className="absolute inset-0 tectonic-grid opacity-40" />}
+			<div className="relative section-shell">
+				<div className="max-w-4xl rise-in">
+					<p className="eyebrow mb-6">{eyebrow}</p>
+					<h1 className="heading leading-[1.02] tracking-[-0.045em] text-balance">
 						{title}
 					</h1>
-					{subtitle && (
-						<p className="mt-8 max-w-2xl text-muted-foreground text-sm md:text-base xl:text-lg leading-relaxed">
-							{subtitle}
+					{description && (
+						<p className="body-copy mt-6 max-w-2xl text-sm md:text-base xl:text-lg">
+							{description}
 						</p>
 					)}
-				</motion.div>
+					{children}
+				</div>
 			</div>
 		</section>
 	);

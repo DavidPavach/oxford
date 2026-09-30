@@ -52,7 +52,12 @@ export default function Navbar() {
 
 						<div className="hidden lg:flex items-center gap-9">
 							{NAV_LINKS.map((l) => (
-								<Link key={l.path} to={l.path} className="nav-link">
+								<Link
+									key={l.path}
+									to={l.path}
+									className="nav-link"
+									activeProps={{ className: "text-accent " }}
+								>
 									{l.label}
 								</Link>
 							))}

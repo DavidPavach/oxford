@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import QualityCompliance from "#/pages/Quality";
 import { APP_NAME } from "../__root";
 
 export const Route = createFileRoute("/_home/quality")({
@@ -9,9 +10,5 @@ export const Route = createFileRoute("/_home/quality")({
 			},
 		],
 	}),
-	component: RouteComponent,
+	component: QualityCompliance,
 });
-
-function RouteComponent() {
-	return <div>Hello "/_home/quality"!</div>;
-}

@@ -52,7 +52,7 @@ export default function Contact() {
 			<PageHero
 				eyebrow="Contact"
 				title="Start a conversation."
-				subtitle="Oxford Petroleum Corporation welcomes enquiries from partners, investors, stakeholders and media. All communications are handled with discretion and precision."
+				description="Oxford Petroleum Corporation welcomes enquiries from partners, investors, stakeholders and media. All communications are handled with discretion and precision."
 			/>
 
 			<section className="bg-white dark:bg-[#05070C] section-shell">
@@ -179,7 +179,7 @@ export default function Contact() {
 											onChange={(e) =>
 												setForm((v) => ({ ...v, [field]: e.target.value }))
 											}
-											className="bg-[#F5F7FA] dark:bg-[#0E1628] px-4 py-3 border border-border focus:border-primary dark:border-white/10 dark:focus:border-white/40 rounded-lg outline-none w-full smallText transition"
+											className="bg-[#F5F7FA] dark:bg-[#0E1628] px-4 py-3 border border-border focus:border-accent dark:border-white/10 dark:focus:border-accent rounded-lg outline-none w-full smallText transition"
 										/>
 									</div>
 								))}
@@ -198,7 +198,7 @@ export default function Contact() {
 										onChange={(e) =>
 											setForm((v) => ({ ...v, message: e.target.value }))
 										}
-										className="bg-[#F5F7FA] dark:bg-[#0E1628] px-4 py-3 border border-border focus:border-primary dark:border-white/10 dark:focus:border-white/40 rounded-lg outline-none w-full smallText transition resize-none"
+										className="bg-[#F5F7FA] dark:bg-[#0E1628] px-4 py-3 border border-border focus:border-accent dark:border-white/10 dark:focus:border-accent rounded-lg outline-none w-full smallText transition resize-none"
 									/>
 								</div>
 								<button

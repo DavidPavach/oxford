@@ -51,7 +51,7 @@ const index = () => {
 			<PageHero
 				eyebrow="Document verification"
 				title="Verify our corporate standing."
-				subtitle="Oxford Petroleum Corporation's registration is publicly verifiable through Corporations Canada. Use this portal to confirm our credentials, or access original documents directly."
+				description="Oxford Petroleum Corporation's registration is publicly verifiable through Corporations Canada. Use this portal to confirm our credentials, or access original documents directly."
 			/>
 
 			{/* Search */}

@@ -13,14 +13,11 @@ import { Route as HomeRouteRouteImport } from './routes/_home/route'
 import { Route as AuthRouteRouteImport } from './routes/_auth/route'
 import { Route as AdminRouteRouteImport } from './routes/_admin/route'
 import { Route as HomeIndexRouteImport } from './routes/_home/index'
-import { Route as HomeSustainabilityRouteImport } from './routes/_home/sustainability'
 import { Route as HomeQualityRouteImport } from './routes/_home/quality'
 import { Route as HomeProductRouteImport } from './routes/_home/product'
-import { Route as HomeOperationsRouteImport } from './routes/_home/operations'
 import { Route as HomeNewsRouteImport } from './routes/_home/news'
-import { Route as HomeInvestorsRouteImport } from './routes/_home/investors'
 import { Route as HomeContactRouteImport } from './routes/_home/contact'
-import { Route as HomeCompanyRouteImport } from './routes/_home/company'
+import { Route as HomeCareersRouteImport } from './routes/_home/careers'
 import { Route as AuthPortalRouteImport } from './routes/_auth/portal'
 import { Route as AdminVaultRouteImport } from './routes/_admin/vault'
 import { Route as AdminLogoutRouteImport } from './routes/_admin/logout'
@@ -48,11 +45,6 @@ const HomeIndexRoute = HomeIndexRouteImport.update({
   path: '/',
   getParentRoute: () => HomeRouteRoute,
 } as any)
-const HomeSustainabilityRoute = HomeSustainabilityRouteImport.update({
-  id: '/sustainability',
-  path: '/sustainability',
-  getParentRoute: () => HomeRouteRoute,
-} as any)
 const HomeQualityRoute = HomeQualityRouteImport.update({
   id: '/quality',
   path: '/quality',
@@ -63,19 +55,9 @@ const HomeProductRoute = HomeProductRouteImport.update({
   path: '/product',
   getParentRoute: () => HomeRouteRoute,
 } as any)
-const HomeOperationsRoute = HomeOperationsRouteImport.update({
-  id: '/operations',
-  path: '/operations',
-  getParentRoute: () => HomeRouteRoute,
-} as any)
 const HomeNewsRoute = HomeNewsRouteImport.update({
   id: '/news',
   path: '/news',
-  getParentRoute: () => HomeRouteRoute,
-} as any)
-const HomeInvestorsRoute = HomeInvestorsRouteImport.update({
-  id: '/investors',
-  path: '/investors',
   getParentRoute: () => HomeRouteRoute,
 } as any)
 const HomeContactRoute = HomeContactRouteImport.update({
@@ -83,9 +65,9 @@ const HomeContactRoute = HomeContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => HomeRouteRoute,
 } as any)
-const HomeCompanyRoute = HomeCompanyRouteImport.update({
-  id: '/company',
-  path: '/company',
+const HomeCareersRoute = HomeCareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
   getParentRoute: () => HomeRouteRoute,
 } as any)
 const AuthPortalRoute = AuthPortalRouteImport.update({
@@ -143,14 +125,11 @@ export interface FileRoutesByFullPath {
   '/logout': typeof AdminLogoutRoute
   '/vault': typeof AdminVaultRoute
   '/portal': typeof AuthPortalRoute
-  '/company': typeof HomeCompanyRoute
+  '/careers': typeof HomeCareersRoute
   '/contact': typeof HomeContactRoute
-  '/investors': typeof HomeInvestorsRoute
   '/news': typeof HomeNewsRoute
-  '/operations': typeof HomeOperationsRoute
   '/product': typeof HomeProductRoute
   '/quality': typeof HomeQualityRoute
-  '/sustainability': typeof HomeSustainabilityRoute
   '/verify/$id': typeof HomeVerifyIdRoute
   '/verify/': typeof HomeVerifyIndexRoute
 }
@@ -162,14 +141,11 @@ export interface FileRoutesByTo {
   '/logout': typeof AdminLogoutRoute
   '/vault': typeof AdminVaultRoute
   '/portal': typeof AuthPortalRoute
-  '/company': typeof HomeCompanyRoute
+  '/careers': typeof HomeCareersRoute
   '/contact': typeof HomeContactRoute
-  '/investors': typeof HomeInvestorsRoute
   '/news': typeof HomeNewsRoute
-  '/operations': typeof HomeOperationsRoute
   '/product': typeof HomeProductRoute
   '/quality': typeof HomeQualityRoute
-  '/sustainability': typeof HomeSustainabilityRoute
   '/verify/$id': typeof HomeVerifyIdRoute
   '/verify': typeof HomeVerifyIndexRoute
 }
@@ -185,14 +161,11 @@ export interface FileRoutesById {
   '/_admin/logout': typeof AdminLogoutRoute
   '/_admin/vault': typeof AdminVaultRoute
   '/_auth/portal': typeof AuthPortalRoute
-  '/_home/company': typeof HomeCompanyRoute
+  '/_home/careers': typeof HomeCareersRoute
   '/_home/contact': typeof HomeContactRoute
-  '/_home/investors': typeof HomeInvestorsRoute
   '/_home/news': typeof HomeNewsRoute
-  '/_home/operations': typeof HomeOperationsRoute
   '/_home/product': typeof HomeProductRoute
   '/_home/quality': typeof HomeQualityRoute
-  '/_home/sustainability': typeof HomeSustainabilityRoute
   '/_home/': typeof HomeIndexRoute
   '/_home/verify/$id': typeof HomeVerifyIdRoute
   '/_home/verify/': typeof HomeVerifyIndexRoute
@@ -208,14 +181,11 @@ export interface FileRouteTypes {
     | '/logout'
     | '/vault'
     | '/portal'
-    | '/company'
+    | '/careers'
     | '/contact'
-    | '/investors'
     | '/news'
-    | '/operations'
     | '/product'
     | '/quality'
-    | '/sustainability'
     | '/verify/$id'
     | '/verify/'
   fileRoutesByTo: FileRoutesByTo
@@ -227,14 +197,11 @@ export interface FileRouteTypes {
     | '/logout'
     | '/vault'
     | '/portal'
-    | '/company'
+    | '/careers'
     | '/contact'
-    | '/investors'
     | '/news'
-    | '/operations'
     | '/product'
     | '/quality'
-    | '/sustainability'
     | '/verify/$id'
     | '/verify'
   id:
@@ -249,14 +216,11 @@ export interface FileRouteTypes {
     | '/_admin/logout'
     | '/_admin/vault'
     | '/_auth/portal'
-    | '/_home/company'
+    | '/_home/careers'
     | '/_home/contact'
-    | '/_home/investors'
     | '/_home/news'
-    | '/_home/operations'
     | '/_home/product'
     | '/_home/quality'
-    | '/_home/sustainability'
     | '/_home/'
     | '/_home/verify/$id'
     | '/_home/verify/'
@@ -298,13 +262,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeIndexRouteImport
       parentRoute: typeof HomeRouteRoute
     }
-    '/_home/sustainability': {
-      id: '/_home/sustainability'
-      path: '/sustainability'
-      fullPath: '/sustainability'
-      preLoaderRoute: typeof HomeSustainabilityRouteImport
-      parentRoute: typeof HomeRouteRoute
-    }
     '/_home/quality': {
       id: '/_home/quality'
       path: '/quality'
@@ -319,25 +276,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeProductRouteImport
       parentRoute: typeof HomeRouteRoute
     }
-    '/_home/operations': {
-      id: '/_home/operations'
-      path: '/operations'
-      fullPath: '/operations'
-      preLoaderRoute: typeof HomeOperationsRouteImport
-      parentRoute: typeof HomeRouteRoute
-    }
     '/_home/news': {
       id: '/_home/news'
       path: '/news'
       fullPath: '/news'
       preLoaderRoute: typeof HomeNewsRouteImport
-      parentRoute: typeof HomeRouteRoute
-    }
-    '/_home/investors': {
-      id: '/_home/investors'
-      path: '/investors'
-      fullPath: '/investors'
-      preLoaderRoute: typeof HomeInvestorsRouteImport
       parentRoute: typeof HomeRouteRoute
     }
     '/_home/contact': {
@@ -347,11 +290,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeContactRouteImport
       parentRoute: typeof HomeRouteRoute
     }
-    '/_home/company': {
-      id: '/_home/company'
-      path: '/company'
-      fullPath: '/company'
-      preLoaderRoute: typeof HomeCompanyRouteImport
+    '/_home/careers': {
+      id: '/_home/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof HomeCareersRouteImport
       parentRoute: typeof HomeRouteRoute
     }
     '/_auth/portal': {
@@ -468,27 +411,21 @@ const HomeVerifyRouteRouteWithChildren = HomeVerifyRouteRoute._addFileChildren(
 
 interface HomeRouteRouteChildren {
   HomeVerifyRouteRoute: typeof HomeVerifyRouteRouteWithChildren
-  HomeCompanyRoute: typeof HomeCompanyRoute
+  HomeCareersRoute: typeof HomeCareersRoute
   HomeContactRoute: typeof HomeContactRoute
-  HomeInvestorsRoute: typeof HomeInvestorsRoute
   HomeNewsRoute: typeof HomeNewsRoute
-  HomeOperationsRoute: typeof HomeOperationsRoute
   HomeProductRoute: typeof HomeProductRoute
   HomeQualityRoute: typeof HomeQualityRoute
-  HomeSustainabilityRoute: typeof HomeSustainabilityRoute
   HomeIndexRoute: typeof HomeIndexRoute
 }
 
 const HomeRouteRouteChildren: HomeRouteRouteChildren = {
   HomeVerifyRouteRoute: HomeVerifyRouteRouteWithChildren,
-  HomeCompanyRoute: HomeCompanyRoute,
+  HomeCareersRoute: HomeCareersRoute,
   HomeContactRoute: HomeContactRoute,
-  HomeInvestorsRoute: HomeInvestorsRoute,
   HomeNewsRoute: HomeNewsRoute,
-  HomeOperationsRoute: HomeOperationsRoute,
   HomeProductRoute: HomeProductRoute,
   HomeQualityRoute: HomeQualityRoute,
-  HomeSustainabilityRoute: HomeSustainabilityRoute,
   HomeIndexRoute: HomeIndexRoute,
 }
 

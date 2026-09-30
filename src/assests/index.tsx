@@ -2,7 +2,7 @@
 export const NAV_LINKS = [
 	{ label: "Product", path: "/product", index: "01" },
 	{ label: "News", path: "/news", index: "02" },
-	{ label: "Quality & Compliance", path: "/quality-compliance", index: "03" },
+	{ label: "Quality & Compliance", path: "/quality", index: "03" },
 	{ label: "Careers", path: "/careers", index: "04" },
 	{ label: "Contact", path: "/contact", index: "05" },
 	{ label: "Verify", path: "/verify", index: "06" },
