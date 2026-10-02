@@ -18,7 +18,7 @@ export default function PageHero({
 			{image && (
 				<div className="absolute inset-0">
 					<img src={image} alt="" className="w-full h-full object-cover" />
-					<div className="absolute inset-0 bg-background/65" />
+					<div className="absolute inset-0 bg-background/55" />
 					<div className="absolute inset-0 bg-linear-to-b from-background/60 via-background/70 to-background" />
 				</div>
 			)}

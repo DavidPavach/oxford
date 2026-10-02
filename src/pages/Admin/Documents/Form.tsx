@@ -23,6 +23,16 @@ const DOCUMENT_TYPES = [
 	{ value: "NOR", label: "Notice of Readiness" },
 	{ value: "COO", label: "Certificate of Origin" },
 	{ value: "SI", label: "Shipping Instruction" },
+	{ value: "DGD", label: "Dangerous Goods Declaration" },
+	{ value: "MSDS", label: "Material Safety Data Sheet" },
+	{ value: "SPA", label: "Sales Purchase Agreement" },
+	{ value: "COA", label: "Certificate of Analysis" },
+	{ value: "CLS", label: "Commitment letter to supply" },
+	{ value: "CPA", label: "Certificate of product Availability" },
+	{ value: "NOR", label: "Notice of Readiness" },
+	{ value: "COQ", label: "Certificate of Quality" },
+	{ value: "POAC", label: "Product Ownership & Allocation certificate" },
+	{ value: "ITIR", label: "In-Tank Inventory Report" },
 ];
 
 export const STATUES = [

@@ -100,7 +100,7 @@ export default function QualityCompliance() {
 							))}
 						</ul>
 						<Link to="/verify" className="premium-button mt-9">
-							Verify our standing
+							Verify Documents
 						</Link>
 					</div>
 					<div className="relative aspect-4/3 rounded-sm overflow-hidden border border-border">

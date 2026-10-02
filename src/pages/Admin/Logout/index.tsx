@@ -7,8 +7,8 @@ import { Button } from "@/components/ui/button";
 export default function LogoutPage() {
 	const handleLogout = async () => {
 		try {
-			removeCookie("coretuim");
-			window.location.href = "/operations";
+			removeCookie("oxford");
+			window.location.href = "/portal";
 		} catch (error) {
 			console.error("Logout failed:", error);
 		}
@@ -37,7 +37,6 @@ export default function LogoutPage() {
 
 				<div className="flex sm:flex-row flex-col gap-3 mt-8">
 					<Button
-						asChild
 						variant="outline"
 						className="flex-1 h-12 font-medium text-[11px] md:text-xs xl:text-sm"
 					>

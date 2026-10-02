@@ -26,7 +26,7 @@ function RouteComponent() {
 			<PageHero
 				eyebrow={`Verification • ${id}`}
 				title={`${id}`}
-				subtitle={`You are verifying document "${id}" issued by Oxford Petroleum Corporation. This portal confirms the authenticity, validity, and current status of official corporate documents using their unique verification code.`}
+				description={`You are verifying document "${id}" issued by Oxford Petroleum Corporation. This portal confirms the authenticity, validity, and current status of official corporate documents using their unique verification code.`}
 			/>
 
 			<Verification />

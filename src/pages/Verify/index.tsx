@@ -50,7 +50,7 @@ const index = () => {
 		<main>
 			<PageHero
 				eyebrow="Document verification"
-				title="Verify our corporate standing."
+				title="Verify Documents"
 				description="Oxford Petroleum Corporation's registration is publicly verifiable through Corporations Canada. Use this portal to confirm our credentials, or access original documents directly."
 			/>
 
@@ -61,7 +61,7 @@ const index = () => {
 						<div>
 							<p className="eyebrow">
 								<DocumentFilter className="size-3 md:size-3.5 xl:size-4" />{" "}
-								Corporation lookup
+								Verify Documents
 							</p>
 							<h2 className="mt-5 font-medium text-xl md:text-2xl xl:text-3xl tracking-tight">
 								Search by document number.
@@ -93,7 +93,7 @@ const index = () => {
 								Primary source documents
 							</p>
 							<h2 className="mt-5 font-medium text-xl md:text-2xl xl:text-3xl tracking-tight">
-								Download original filings.
+								Download Corporate Documents.
 							</h2>
 							<p className="mt-3 text-[11px] text-muted-foreground md:text-xs xl:text-sm">
 								All documents are original filings from Innovation, Science and

@@ -6,7 +6,7 @@ export const Route = createFileRoute("/_auth/portal")({
 	head: () => ({
 		meta: [
 			{
-				title: `Company | ${APP_NAME}`,
+				title: `Portal | ${APP_NAME}`,
 			},
 		],
 	}),

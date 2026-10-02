@@ -67,11 +67,11 @@ const Result = ({ doc }: { doc: Documents }) => {
 					</strong>
 					<p className="text-muted-foreground text-xs">
 						{doc.status === "active" &&
-							"This document set has been authenticated against official corporate records."}
+							"This document has been issued by Oxford Petroleum Corporation (OPC), authenticated against official records, and is currently valid for its intended purpose."}
 						{doc.status === "on_hold" &&
-							"This document set is under hold and being reviewed and not yet fully verified."}
+							"This document is temporarily suspended pending further action, review, compliance requirements, payment, or resolution of an operational matter."}
 						{doc.status === "revoked" &&
-							"This document set has been revoked and must not be relied upon."}
+							"This document has been revoked and is no longer valid. It should not be relied upon for any transaction or commercial purpose."}
 					</p>
 				</div>
 			</div>
