@@ -13,8 +13,10 @@ import { Route as HomeRouteRouteImport } from './routes/_home/route'
 import { Route as AuthRouteRouteImport } from './routes/_auth/route'
 import { Route as AdminRouteRouteImport } from './routes/_admin/route'
 import { Route as HomeIndexRouteImport } from './routes/_home/index'
+import { Route as HomeTermsRouteImport } from './routes/_home/terms'
 import { Route as HomeQualityRouteImport } from './routes/_home/quality'
 import { Route as HomeProductRouteImport } from './routes/_home/product'
+import { Route as HomePrivacyRouteImport } from './routes/_home/privacy'
 import { Route as HomeNewsRouteImport } from './routes/_home/news'
 import { Route as HomeContactRouteImport } from './routes/_home/contact'
 import { Route as HomeCareersRouteImport } from './routes/_home/careers'
@@ -45,6 +47,11 @@ const HomeIndexRoute = HomeIndexRouteImport.update({
   path: '/',
   getParentRoute: () => HomeRouteRoute,
 } as any)
+const HomeTermsRoute = HomeTermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
 const HomeQualityRoute = HomeQualityRouteImport.update({
   id: '/quality',
   path: '/quality',
@@ -53,6 +60,11 @@ const HomeQualityRoute = HomeQualityRouteImport.update({
 const HomeProductRoute = HomeProductRouteImport.update({
   id: '/product',
   path: '/product',
+  getParentRoute: () => HomeRouteRoute,
+} as any)
+const HomePrivacyRoute = HomePrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => HomeRouteRoute,
 } as any)
 const HomeNewsRoute = HomeNewsRouteImport.update({
@@ -128,8 +140,10 @@ export interface FileRoutesByFullPath {
   '/careers': typeof HomeCareersRoute
   '/contact': typeof HomeContactRoute
   '/news': typeof HomeNewsRoute
+  '/privacy': typeof HomePrivacyRoute
   '/product': typeof HomeProductRoute
   '/quality': typeof HomeQualityRoute
+  '/terms': typeof HomeTermsRoute
   '/verify/$id': typeof HomeVerifyIdRoute
   '/verify/': typeof HomeVerifyIndexRoute
 }
@@ -144,8 +158,10 @@ export interface FileRoutesByTo {
   '/careers': typeof HomeCareersRoute
   '/contact': typeof HomeContactRoute
   '/news': typeof HomeNewsRoute
+  '/privacy': typeof HomePrivacyRoute
   '/product': typeof HomeProductRoute
   '/quality': typeof HomeQualityRoute
+  '/terms': typeof HomeTermsRoute
   '/verify/$id': typeof HomeVerifyIdRoute
   '/verify': typeof HomeVerifyIndexRoute
 }
@@ -164,8 +180,10 @@ export interface FileRoutesById {
   '/_home/careers': typeof HomeCareersRoute
   '/_home/contact': typeof HomeContactRoute
   '/_home/news': typeof HomeNewsRoute
+  '/_home/privacy': typeof HomePrivacyRoute
   '/_home/product': typeof HomeProductRoute
   '/_home/quality': typeof HomeQualityRoute
+  '/_home/terms': typeof HomeTermsRoute
   '/_home/': typeof HomeIndexRoute
   '/_home/verify/$id': typeof HomeVerifyIdRoute
   '/_home/verify/': typeof HomeVerifyIndexRoute
@@ -184,8 +202,10 @@ export interface FileRouteTypes {
     | '/careers'
     | '/contact'
     | '/news'
+    | '/privacy'
     | '/product'
     | '/quality'
+    | '/terms'
     | '/verify/$id'
     | '/verify/'
   fileRoutesByTo: FileRoutesByTo
@@ -200,8 +220,10 @@ export interface FileRouteTypes {
     | '/careers'
     | '/contact'
     | '/news'
+    | '/privacy'
     | '/product'
     | '/quality'
+    | '/terms'
     | '/verify/$id'
     | '/verify'
   id:
@@ -219,8 +241,10 @@ export interface FileRouteTypes {
     | '/_home/careers'
     | '/_home/contact'
     | '/_home/news'
+    | '/_home/privacy'
     | '/_home/product'
     | '/_home/quality'
+    | '/_home/terms'
     | '/_home/'
     | '/_home/verify/$id'
     | '/_home/verify/'
@@ -262,6 +286,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HomeIndexRouteImport
       parentRoute: typeof HomeRouteRoute
     }
+    '/_home/terms': {
+      id: '/_home/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof HomeTermsRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
     '/_home/quality': {
       id: '/_home/quality'
       path: '/quality'
@@ -274,6 +305,13 @@ declare module '@tanstack/react-router' {
       path: '/product'
       fullPath: '/product'
       preLoaderRoute: typeof HomeProductRouteImport
+      parentRoute: typeof HomeRouteRoute
+    }
+    '/_home/privacy': {
+      id: '/_home/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof HomePrivacyRouteImport
       parentRoute: typeof HomeRouteRoute
     }
     '/_home/news': {
@@ -414,8 +452,10 @@ interface HomeRouteRouteChildren {
   HomeCareersRoute: typeof HomeCareersRoute
   HomeContactRoute: typeof HomeContactRoute
   HomeNewsRoute: typeof HomeNewsRoute
+  HomePrivacyRoute: typeof HomePrivacyRoute
   HomeProductRoute: typeof HomeProductRoute
   HomeQualityRoute: typeof HomeQualityRoute
+  HomeTermsRoute: typeof HomeTermsRoute
   HomeIndexRoute: typeof HomeIndexRoute
 }
 
@@ -424,8 +464,10 @@ const HomeRouteRouteChildren: HomeRouteRouteChildren = {
   HomeCareersRoute: HomeCareersRoute,
   HomeContactRoute: HomeContactRoute,
   HomeNewsRoute: HomeNewsRoute,
+  HomePrivacyRoute: HomePrivacyRoute,
   HomeProductRoute: HomeProductRoute,
   HomeQualityRoute: HomeQualityRoute,
+  HomeTermsRoute: HomeTermsRoute,
   HomeIndexRoute: HomeIndexRoute,
 }
 

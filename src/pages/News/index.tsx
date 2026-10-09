@@ -1,18 +1,11 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Book1, Camera, LampOn } from "iconsax-reactjs";
-import { Megaphone, Newspaper } from "lucide-react";
+import { ArrowRight } from "iconsax-reactjs";
 import { IMAGES } from "#/assests";
+import { NewsCard } from "#/components/NewsCard";
 import PageHero from "#/components/PageHero";
 import SectionHeader from "#/components/SectionHeader";
+import { useNews } from "#/services/queries";
 import { formatDate } from "#/utils/format";
-
-const CATEGORIES = [
-	{ icon: Megaphone, label: "Press Releases" },
-	{ icon: Newspaper, label: "Company Announcements" },
-	{ icon: LampOn, label: "Industry Insights" },
-	{ icon: Camera, label: "Media" },
-	{ icon: Book1, label: "Publications" },
-];
 
 const ITEMS = [
 	{
@@ -66,7 +59,10 @@ const ITEMS = [
 ];
 
 export default function News() {
+	const { data: news = [], isPending, isError } = useNews();
+
 	const [featured, ...rest] = ITEMS;
+
 	return (
 		<>
 			<PageHero
@@ -76,21 +72,52 @@ export default function News() {
 				image={IMAGES.offshoreRig}
 			/>
 
-			<section className="border-b border-border">
-				<div className="section-shell">
-					<div className="grid grid-cols-2 md:grid-cols-5 gap-px bg-border border-x border-b border-border">
-						{CATEGORIES.map((c) => (
-							<div
-								key={c.label}
-								className="bg-card p-4 md:p-5 xl:p-6 flex flex-col items-center text-center gap-3"
-							>
-								<c.icon className="size-4 md:size-4.5 xl:size-5 text-accent" />
-								<span className="font-heading font-semibold smallText tracking-[-0.01em]">
-									{c.label}
-								</span>
+			<section className="section-shell">
+				<SectionHeader
+					eyebrow="Live industry news"
+					title="Petroleum sector, right now."
+					description="Real-time headlines from across energy markets, pipelines and policy — refreshed from live web sources."
+				/>
+
+				{/* Pending */}
+				<div>
+					{isPending && (
+						<section className="section-shell">
+							<div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+								{[1, 2, 3].map((item) => (
+									<div
+										key={item}
+										className="aspect-16/13 animate-pulse rounded-sm bg-muted"
+									/>
+								))}
 							</div>
-						))}
-					</div>
+						</section>
+					)}
+				</div>
+
+				{/* Error */}
+				<div>
+					{!isPending && isError && (
+						<p className="smallText text-destructive">
+							Live news is currently unavailable. Please try again later.
+						</p>
+					)}
+				</div>
+
+				{/* No News */}
+				<div>
+					{!isPending && news.length === 0 && (
+						<p className="text-accent">
+							No updates are available at this time. Please refresh the page.
+						</p>
+					)}
+				</div>
+
+				{/* Fetch News */}
+				<div className="grid gap-5 min-[600px]:grid-cols-2 lg:grid-cols-3 mt-10">
+					{news.slice(0, 12).map((article) => (
+						<NewsCard key={article.article_id} article={article} />
+					))}
 				</div>
 			</section>
 

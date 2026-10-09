@@ -8,6 +8,7 @@ import Infrastructure from "./Infrastructure";
 import InvestorPortal from "./InvestorPortal";
 import Management from "./Management";
 import Operations from "./Operations";
+import Partners from "./Partners";
 import ResponsibleEnergy from "./ResponsibleEnergy";
 import SupplyTrading from "./SupplyTrading";
 
@@ -25,6 +26,7 @@ const index = () => {
 			<InvestorPortal />
 			<ResponsibleEnergy />
 			<FaqSection />
+			<Partners />
 			<ContactCta />
 		</main>
 	);

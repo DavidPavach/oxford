@@ -35,7 +35,7 @@ export const COMPANY = {
 	governingAct: "Canada Business Corporations Act (CBCA)",
 	status: "Active",
 	address: "4519 16A Street S.W., Calgary, AB T2T 4L8, Canada",
-	phone: "+1 403-861-7385",
+	phone: "+1 (825)-460-0139",
 	email: "corporate@oxfordpetroleumcorp.ca",
 	jurisdiction: "Alberta, Canada",
 };
@@ -101,4 +101,91 @@ export const TICKER_ITEMS = [
 	"CALGARY · ALBERTA · CANADA",
 	"CBCA GOVERNED SINCE 1985",
 	"STATUS: ACTIVE",
+];
+
+export const partners: Partner[] = [
+	{
+		name: "AmSpec",
+		logo: "/partners/AmSpec.png",
+	},
+	{
+		name: "BCWest",
+		logo: "/partners/Bcwest.png",
+	},
+	{
+		name: "Trafigura",
+		logo: "/partners/Blue.png",
+	},
+	{
+		name: "BNB Paribas",
+		logo: "/partners/Bnb.png",
+	},
+	{
+		name: "Calgary Chamber",
+		logo: "/partners/Calgary.png",
+	},
+	{
+		name: "Cepsa",
+		logo: "/partners/Cepsa.png",
+	},
+	{
+		name: "Clarksons",
+		logo: "/partners/Clarksons.png",
+	},
+	{
+		name: "Ice Blue M",
+		logo: "/partners/Ice.png",
+	},
+	{
+		name: "Intertwined",
+		logo: "/partners/Interwined.png",
+	},
+	{
+		name: "Lloyds",
+		logo: "/partners/Lloyds.png",
+	},
+	{
+		name: "Mercuria",
+		logo: "/partners/Mercuria.png",
+	},
+	{
+		name: "Molgroup",
+		logo: "/partners/Molgroup.png",
+	},
+	{
+		name: "MUFG",
+		logo: "/partners/Mufg.png",
+	},
+	{
+		name: "Nippon Yusen Kaisha",
+		logo: "/partners/Nyk.png",
+	},
+	{
+		name: "OMV",
+		logo: "/partners/Omv.png",
+	},
+	{
+		name: "Pertamina",
+		logo: "/partners/Pertamina.png",
+	},
+	{
+		name: "Quality System Certification",
+		logo: "/partners/Quality.png",
+	},
+	{
+		name: "Idemitsu",
+		logo: "/partners/Red.png",
+	},
+	{
+		name: "SGS",
+		logo: "/partners/Sgs.png",
+	},
+	{
+		name: "Vitol",
+		logo: "/partners/Vitol.png",
+	},
+	{
+		name: "Vopak",
+		logo: "/partners/Vopak.png",
+	},
 ];

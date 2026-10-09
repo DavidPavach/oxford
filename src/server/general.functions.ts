@@ -72,3 +72,43 @@ export const deleteDocumentFn = createServerFn({ method: "POST" })
 	.handler(async ({ data }) => {
 		return await deleteDocumentRecord(data.id);
 	});
+
+// News
+const PRIORITY_COUNTRIES = [
+	"ca", // Canada
+	"us", // United States
+	"gb", // United Kingdom
+	"no", // Norway
+	"ae", // United Arab Emirates
+];
+
+export async function getPetroleumNews(): Promise<NewsArticle[]> {
+	const params = new URLSearchParams({
+		apikey: import.meta.env.VITE_NEWSDATA_API_KEY,
+		q: '(oil OR petroleum OR "crude oil" OR "natural gas" OR LNG)',
+		language: "en",
+		category: "business",
+		country: PRIORITY_COUNTRIES.join(","),
+	});
+	const response = await fetch(
+		`https://newsdata.io/api/1/latest?${params.toString()}`,
+	);
+
+	if (!response.ok) {
+		throw new Error(`News request failed: ${response.status}`);
+	}
+
+	const data = (await response.json()) as NewsDataResponse;
+
+	if (data.status !== "success") {
+		throw new Error("NewsData returned an unsuccessful response");
+	}
+
+	// Render only image filled news article
+	return data.results.filter(
+		(article) =>
+			Boolean(article.title) &&
+			Boolean(article.link) &&
+			Boolean(article.image_url),
+	);
+}

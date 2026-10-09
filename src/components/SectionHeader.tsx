@@ -14,7 +14,7 @@ export default function SectionHeader({
 	const isCenter = align === "center";
 	return (
 		<div
-			className={`max-w-3xl ${isCenter ? "mx-auto text-center" : ""} ${className}`}
+			className={`max-w-4xl ${isCenter ? "mx-auto text-center" : ""} ${className}`}
 		>
 			{eyebrow && <p className="eyebrow mb-5">{eyebrow}</p>}
 			<h2 className="section-title">{title}</h2>

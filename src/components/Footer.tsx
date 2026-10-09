@@ -39,6 +39,8 @@ const FOOTER_COLUMNS = [
 			{ label: "Contact", path: "/contact" },
 			{ label: "Verify standing", path: "/verify" },
 			{ label: "Corporate governance", path: "/quality" },
+			{ label: "Privacy Policy", path: "/privacy" },
+			{ label: "Terms of Use", path: "/terms" },
 		],
 	},
 ];
@@ -55,7 +57,7 @@ export default function Footer() {
 						alt="Refinery at dusk"
 						className="w-full h-full object-fill"
 					/>
-					<div className="absolute inset-0 bg-linear-to-t from-background via-background/70 to-background/60" />
+					<div className="absolute inset-0 bg-white/80 dark:bg-black/80" />
 				</div>
 
 				<div className="relative section-shell">
@@ -66,7 +68,7 @@ export default function Footer() {
 								<span className="font-heading font-extrabold text-xl md:text-2xl xl:text-3xl tracking-[-0.04em]">
 									OXFORD
 								</span>
-								<span className="font-mono text-[9px] md:text-[9.5px] xl:text-[10px] uppercase tracking-[0.34em] text-muted-foreground mt-1">
+								<span className="font-mono text-[9px] md:text-[9.5px] xl:text-[10px] uppercase tracking-[0.34em] mt-1">
 									Petroleum Corporation
 								</span>
 							</div>
@@ -75,9 +77,14 @@ export default function Footer() {
 								resilient infrastructure and responsible growth across the
 								energy value chain.
 							</p>
-							<div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 font-mono smallestText uppercase tracking-[0.16em] text-muted-foreground">
-								<span>CBCA · {COMPANY.corporationNumber}</span>
-								<span>Est. {COMPANY.incorporated.split(" ")[2]}</span>
+							<div className="mt-6 gap-x-6 gap-y-2 font-mono smallestText uppercase tracking-[0.16em]">
+								<p className="hover:text-accent hover:text-underline duration-200">
+									Phone: <a href={`tel:${COMPANY.phone}`}>{COMPANY.phone}</a>
+								</p>
+								<div className="flex flex-wrap">
+									<span>CBCA · {COMPANY.corporationNumber}</span>
+									<span>Est. {COMPANY.incorporated.split(" ")[2]}</span>
+								</div>
 							</div>
 						</div>
 
@@ -85,7 +92,7 @@ export default function Footer() {
 						<div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8">
 							{FOOTER_COLUMNS.map((col) => (
 								<div key={col.title}>
-									<h4 className="font-mono smallestText uppercase tracking-[0.2em] text-muted-foreground mb-4">
+									<h4 className="font-mono smallestText uppercase tracking-[0.2em] mb-4">
 										{col.title}
 									</h4>
 									<ul className="space-y-2.5">
@@ -93,7 +100,7 @@ export default function Footer() {
 											<li key={link.label}>
 												<Link
 													to={link.path}
-													className="smallText text-muted-foreground hover:text-accent transition-colors"
+													className="smallText hover:text-accent transition-colors"
 												>
 													{link.label}
 												</Link>
@@ -108,12 +115,10 @@ export default function Footer() {
 					{/* bottom */}
 					<div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pt-8">
 						<div className="space-y-1">
-							<p className="font-mono smallestText uppercase tracking-[0.16em] text-muted-foreground">
+							<p className="font-mono smallestText uppercase tracking-[0.16em]">
 								Registered Office
 							</p>
-							<p className="text-sm text-muted-foreground max-w-md">
-								{COMPANY.address}
-							</p>
+							<p className="text-sm max-w-md">{COMPANY.address}</p>
 						</div>
 
 						<section className="flex gap-x-2 items-center">
@@ -123,7 +128,7 @@ export default function Footer() {
 								onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
 								className="group flex items-center gap-3 cursor-pointer"
 							>
-								<span className="font-mono smallestText uppercase tracking-[0.2em] text-muted-foreground group-hover:text-accent transition-colors">
+								<span className="font-mono smallestText uppercase tracking-[0.2em] group-hover:text-accent transition-colors">
 									Back to top
 								</span>
 								<span className="relative grid place-items-center w-10 h-10 border border-border rounded-sm group-hover:border-accent transition-colors">

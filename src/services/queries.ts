@@ -5,6 +5,7 @@ import {
 	fetchAllContactsFn,
 	fetchAllDocumentFn,
 	fetchDocumentFn,
+	getPetroleumNews,
 } from "#/server/general.functions";
 import { fetchAllMedia } from "#/server/storage.functions";
 
@@ -41,5 +42,14 @@ export const useAllDocuments = () => {
 	return useQuery({
 		queryKey: ["documents"],
 		queryFn: fetchAllDocumentFn,
+	});
+};
+
+// Fetch News
+export const useNews = () => {
+	return useQuery({
+		queryKey: ["petroleum-news"],
+		queryFn: getPetroleumNews,
+		staleTime: 1000 * 60 * 15,
 	});
 };
