@@ -37,7 +37,7 @@ const FOOTER_COLUMNS = [
 		links: [
 			{ label: "Careers", path: "/careers" },
 			{ label: "Contact", path: "/contact" },
-			{ label: "Verify standing", path: "/verify" },
+			{ label: "Verify documents", path: "/verify" },
 			{ label: "Corporate governance", path: "/quality" },
 			{ label: "Privacy Policy", path: "/privacy" },
 			{ label: "Terms of Use", path: "/terms" },

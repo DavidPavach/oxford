@@ -85,7 +85,9 @@ export default function Contact() {
 									<strong className="font-semibold smallText uppercase">
 										Corporate Office
 									</strong>
-									<p className="mt-2 text-muted-foreground">+1 403-861-7385</p>
+									<p className="mt-2 text-muted-foreground">
+										+1 (825)-460-0139
+									</p>
 								</div>
 							</div>
 							<div className="flex gap-5">

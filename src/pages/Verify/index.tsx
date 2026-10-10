@@ -8,7 +8,7 @@ const docs = [
 	{
 		label: "Corporate Profile (May 2026)",
 		date: "2026-05-21",
-		url: "/corporate_profile.pdf",
+		url: "#",
 	},
 	{
 		label: "Certificate of Incorporation",
@@ -51,7 +51,7 @@ const index = () => {
 			<PageHero
 				eyebrow="Document verification"
 				title="Verify Documents"
-				description="Oxford Petroleum Corporation's registration is publicly verifiable through Corporations Canada. Use this portal to confirm our credentials, or access original documents directly."
+				description="Use this portal to access and verify the authenticity of official Oxford Petroleum Corporation documents directly against our records."
 			/>
 
 			{/* Search */}
@@ -103,12 +103,11 @@ const index = () => {
 								{docs.map((d) => (
 									<a
 										onClick={(e) => {
-											if (d.label !== "Corporate Profile (May 2026)") {
-												e.preventDefault();
-												toast.info(
-													"This document is only available on request.",
-												);
-											}
+											e.preventDefault();
+											toast.info(
+												"This document is only available on request.",
+												{ className: "smallText" },
+											);
 										}}
 										key={d.label}
 										href={

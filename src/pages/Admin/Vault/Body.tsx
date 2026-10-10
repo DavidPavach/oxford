@@ -123,7 +123,7 @@ const Body = () => {
 							type="button"
 							key={c.id}
 							onClick={() => setCategory(c.id)}
-							className={`rounded-full px-4 py-2 text-[10px] md:text-[11px] xl:text-xs font-semibold uppercase tracking-widest transition ${
+							className={`rounded-full px-4 py-2 text-[10px] md:text-[11px] xl:text-xs cursor-pointer font-semibold uppercase tracking-widest transition ${
 								category === c.id
 									? "bg-primary text-primary-foreground"
 									: "bg-muted text-muted-foreground"
